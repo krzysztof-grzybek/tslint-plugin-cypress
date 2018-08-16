@@ -1,0 +1,6 @@
+{
+    "rules": {
+        "no-chainable-assignment": true
+    },
+    "rulesDirectory": "src"
+}
