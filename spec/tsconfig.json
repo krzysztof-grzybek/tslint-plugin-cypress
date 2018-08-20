@@ -10,6 +10,6 @@
     ]
   },
   "files": [
-    "../fixtures/1.ts"
+    "./fixtures/source.ts"
   ]
 }

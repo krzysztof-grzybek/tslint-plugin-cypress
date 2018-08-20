@@ -1,16 +1,21 @@
 import * as Lint from 'tslint';
-import * as ts from 'typescript';
 import { isVariableDeclaration } from 'tsutils';
+import * as ts from 'typescript';
 
 export class Rule extends Lint.Rules.TypedRule {
-    static FAILURE_STRING = 'Use of debugger statements is forbidden.';
+    public static FAILURE_STRING = 'Assignment Chainable to variable is forbidden.';
     public static metadata: Lint.IRuleMetadata = {
-        ruleName: 'no-chainable-assignment',
-        description: 'Requires expressions of type `void` to appear in statement position.',
-        optionsDescription: Lint.Utils.dedent`todo`,
+        description: Lint.Utils.dedent`
+            Forbids assignment values of type "Chainable" to variables.`,
         options: {},
-        rationale: Lint.Utils.dedent`todo `,
+        optionsDescription: '',
+        rationale: Lint.Utils.dedent`
+            Assignment values of type "Chainable" (e.g. \`cy.get()\`) might be misleading and
+            probably won't work as expected.
+            Read more here - https://docs.cypress.io/guides/core-concepts/variables-and-aliases.html#Return-Values
+            `,
         requiresTypeInfo: true,
+        ruleName: 'no-chainable-assignment',
         type: 'functionality',
         typescriptOnly: false,
     };
@@ -36,10 +41,10 @@ function check(node: ts.VariableDeclaration, checker: ts.TypeChecker, ctx: Lint.
         if (escapedName === 'Chainable') {
             ctx.addFailureAtNode(
                 node,
-                'Cannot assign Chainable type to variable.'
+                Rule.FAILURE_STRING,
             );
         }
-    } catch(e) {
+    } catch (e) {
         // do nothing
     }
 

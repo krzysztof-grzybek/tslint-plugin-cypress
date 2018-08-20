@@ -1,6 +1,7 @@
 {
+    "extends": "tslint:latest",
     "rules": {
-        "no-chainable-assignment": true
-    },
-    "rulesDirectory": "src"
+        "quotemark": [true, "single"],
+        "no-implicit-dependencies": [true, "dev"]
+    }
 }
