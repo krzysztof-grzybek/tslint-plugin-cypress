@@ -10,6 +10,7 @@
     ]
   },
   "files": [
-    "src/noChainableAssignmentRule.ts"
+    "src/noChainableAssignmentRule.ts",
+    "src/noChainableArgumentsRule.ts",
   ]
 }

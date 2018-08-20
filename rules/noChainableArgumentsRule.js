@@ -26,14 +26,14 @@ var Rule = /** @class */ (function (_super) {
     Rule.prototype.applyWithProgram = function (sourceFile, program) {
         return this.applyWithFunction(sourceFile, walk, undefined, program.getTypeChecker());
     };
-    Rule.FAILURE_STRING = 'Assignment Chainable to variable is forbidden.';
+    Rule.FAILURE_STRING = 'Passing Chainable as function argument is forbidden.';
     Rule.metadata = {
-        description: Lint.Utils.dedent(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n            Forbids assignment values of type \"Chainable\" to variables."], ["\n            Forbids assignment values of type \"Chainable\" to variables."]))),
+        description: Lint.Utils.dedent(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n            Forbids passing values of type \"Chainable\" to function arguments."], ["\n            Forbids passing values of type \"Chainable\" to function arguments."]))),
         options: {},
         optionsDescription: '',
-        rationale: Lint.Utils.dedent(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n            Assignment values of type \"Chainable\" (e.g. `cy.get()`) might be misleading and\n            probably won't work as expected.\n            Read more here - https://docs.cypress.io/guides/core-concepts/variables-and-aliases.html#Return-Values\n            "], ["\n            Assignment values of type \"Chainable\" (e.g. \\`cy.get()\\`) might be misleading and\n            probably won't work as expected.\n            Read more here - https://docs.cypress.io/guides/core-concepts/variables-and-aliases.html#Return-Values\n            "]))),
+        rationale: Lint.Utils.dedent(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n            Passing values of type \"Chainable\" (e.g. `cy.get()`) might be misleading and\n            probably won't work as expected.\n            Read more here - https://docs.cypress.io/guides/core-concepts/variables-and-aliases.html#Return-Values\n            "], ["\n            Passing values of type \"Chainable\" (e.g. \\`cy.get()\\`) might be misleading and\n            probably won't work as expected.\n            Read more here - https://docs.cypress.io/guides/core-concepts/variables-and-aliases.html#Return-Values\n            "]))),
         requiresTypeInfo: true,
-        ruleName: 'no-chainable-assignment',
+        ruleName: 'no-chainable-argument',
         type: 'functionality',
         typescriptOnly: false,
     };
@@ -42,26 +42,17 @@ var Rule = /** @class */ (function (_super) {
 exports.Rule = Rule;
 function walk(ctx, checker) {
     return ts.forEachChild(ctx.sourceFile, function cb(node) {
-        if (tsutils_1.isVariableDeclaration(node)) {
-            check(node, node.initializer, checker, ctx);
-        }
-        else if (tsutils_1.isPropertyAssignment(node)) {
-            check(node, node.initializer, checker, ctx);
-        }
-        else if (tsutils_1.isBinaryExpression(node) && isEqualsToken(node.operatorToken)) {
-            check(node, node.right, checker, ctx);
-        }
-        else if (tsutils_1.isArrayLiteralExpression(node)) {
-            node.elements.forEach(function (el) {
-                check(node, el, checker, ctx);
+        if (tsutils_1.isCallExpression(node)) {
+            node.arguments.forEach(function (argNode) {
+                check(argNode, checker, ctx);
             });
         }
         return ts.forEachChild(node, cb);
     });
 }
-function check(node, value, checker, ctx) {
+function check(node, checker, ctx) {
     try {
-        var type = checker.getTypeAtLocation(value);
+        var type = checker.getTypeAtLocation(node);
         var escapedName = type.getSymbol().getEscapedName();
         if (escapedName === config_1.CHAINABLE_TYPE_NAME) {
             ctx.addFailureAtNode(node, Rule.FAILURE_STRING);
@@ -71,8 +62,5 @@ function check(node, value, checker, ctx) {
         // do nothing
     }
 }
-function isEqualsToken(token) {
-    return token.kind === 58;
-}
 var templateObject_1, templateObject_2;
-//# sourceMappingURL=noChainableAssignmentRule.js.map
+//# sourceMappingURL=noChainableArgumentsRule.js.map
