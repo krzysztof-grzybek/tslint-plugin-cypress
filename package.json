@@ -1,7 +1,7 @@
 {
-  "name": "cypress-nano-linter",
+  "name": "tslint-plugin-cypress",
   "version": "1.0.0",
-  "description": "Set of tslint rules for cypress.",
+  "description": "Set of tslint rules for cypress.io.",
   "scripts": {
     "build": "tsc --outDir rules",
     "dev": "node --inspect-brk ./node_modules/jest/bin/jest.js --runInBand",
@@ -12,6 +12,12 @@
     "type": "git",
     "url": "git+https://github.com/krzysztof-grzybek/cypress-nano-linter.git"
   },
+  "keywords": [
+    "Cypress",
+    "cypress.io",
+    "lint",
+    "tslint"
+  ],
   "devDependencies": {
     "@types/node": "^10.5.8",
     "@types/jest": "^23.0.0",
@@ -36,7 +42,7 @@
     ],
     "testEnvironment": "node"
   },
-  "author": "Krzysztof Grzybek",
+  "author": "Krzysztof Grzybek <krzysztof.grzybek89@gmail.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/krzysztof-grzybek/cypress-nano-linter/issues"
