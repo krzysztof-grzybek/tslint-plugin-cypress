@@ -8,7 +8,7 @@ Set of tslint rules for testing with [cypress.io](https://www.cypress.io/).
 
 Prerequisites:
 
-Typescript installed and setup.
+Typescript and tslint installed and setup.
 
 Install package:
 ```
@@ -26,15 +26,23 @@ Then add these to your `tslint.json` file.
 }
 ```
 
+Run
+
+```
+./node_modules/.bin/tslint -c tslint.json -p . cypress/**/*.ts -t stylish
+```
+
+Look at example repo [here](https://github.com/krzysztof-grzybek/tslint-plugin-cypress-example).
+
+Unfortunately, VS code [doesn't support](https://github.com/Microsoft/vscode-tslint/blob/master/tslint/README.md#faq) plugins which requires type information.
+
 # Rules
 
 Main purpose of this package is to prevent working with return values of Cypress commands.
 
 From [cypress.io](https://docs.cypress.io/guides/core-concepts/variables-and-aliases.html#Return-Values):
 
-***
-You cannot assign or work with the return values of any Cypress command. Commands are enqueued and run asynchronously.
-***
+> You cannot assign or work with the return values of any Cypress command. Commands are enqueued and run asynchronously.
 
 There are only 2 rules:
 
