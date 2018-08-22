@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "Set of tslint rules for cypress.io.",
   "scripts": {
-    "build": "tsc --outDir rules",
+    "build": "tsc",
+    "pre-publish": "npm run build && ncp ./dist/ ./",
     "dev": "node --inspect-brk ./node_modules/jest/bin/jest.js --runInBand",
     "test": "jest",
     "lint": "tslint -p . -t stylish -c tslint.json src/**/*.ts spec/**/*.ts"
@@ -19,15 +20,19 @@
     "tslint"
   ],
   "devDependencies": {
-    "@types/node": "^10.5.8",
     "@types/jest": "^23.0.0",
-    "jest": "^23.1.0",
+    "@types/node": "^10.7.1",
+    "jest": "^23.5.0",
+    "ncp": "^2.0.0",
     "ts-jest": "^22.4.6",
-    "typescript": "^2.9.2",
-    "tslint": "^5.10.0"
+    "tslint": "^5.10.0",
+    "typescript": "^2.9.2"
   },
   "dependencies": {
     "tsutils": "^3.0.0"
+  },
+  "peerDependencies": {
+    "tslint": "^5.0.0"
   },
   "jest": {
     "moduleFileExtensions": [
