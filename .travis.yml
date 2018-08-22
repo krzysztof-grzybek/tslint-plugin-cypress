@@ -1,0 +1,13 @@
+language: node_js
+
+node_js:
+  - '8.11.3'
+  - stable
+os:
+  - linux
+  - osx
+
+branches:
+  only: master
+
+script: npm run lint && npm t
