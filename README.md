@@ -17,11 +17,7 @@ npm i -D tslint-plugin-cypress
 Then add these to your `tslint.json` file.
 ```
 {
-  "rulesDirectory": ["node_modules/tslint-plugin-cypress/rules"],
-  "rules": {
-    "no-chainable-assignment": true,
-    "no-chainable-arguments": true,
-  }
+  "extends": "tslint-plugin-cypress"
 }
 ```
 
