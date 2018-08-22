@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+      "declaration": true,
+      "module": "commonjs",
+      "target": "es5",
+      "outDir": "dist",
+      "skipLibCheck": true,
+      "lib": [
+        "es6"
+      ],
+      "removeComments": true,
+    },
+    "files": [
+        "src/noChainableAssignmentRule.ts",
+        "src/noChainableArgumentsRule.ts",
+    ]
+  }

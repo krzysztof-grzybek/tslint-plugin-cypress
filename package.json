@@ -4,7 +4,7 @@
   "description": "Set of tslint rules for cypress.io.",
   "scripts": {
     "build": "tsc",
-    "pre-publish": "npm run build && ncp ./dist/ ./",
+    "pre-publish": "tsc -p tsconfig-release.json && ncp ./dist/ ./",
     "dev": "node --inspect-brk ./node_modules/jest/bin/jest.js --runInBand",
     "test": "jest",
     "lint": "tslint -p . -t stylish -c tslint.json src/**/*.ts spec/**/*.ts"

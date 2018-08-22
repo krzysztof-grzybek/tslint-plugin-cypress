@@ -3,5 +3,10 @@
     "rules": {
         "quotemark": [true, "single"],
         "no-implicit-dependencies": [true, "dev"]
+    },
+    "linterOptions": {
+        "exclude": [
+            "spec/fixtures/*.ts"
+        ]
     }
 }
