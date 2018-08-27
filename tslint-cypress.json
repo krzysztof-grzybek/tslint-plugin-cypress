@@ -1,5 +1,5 @@
 {
-    "rulesDirectory": "./",
+    "rulesDirectory": "./dist",
     "rules": {
         "no-chainable-assignment": true,
         "no-chainable-arguments": true
