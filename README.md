@@ -2,9 +2,15 @@
 
 [![Build Status](https://travis-ci.org/krzysztof-grzybek/tslint-plugin-cypress.svg?branch=master)](https://travis-ci.org/krzysztof-grzybek/tslint-plugin-cypress)
 
-In development...
-
 Set of tslint rules for testing with [cypress.io](https://www.cypress.io/).
+
+# Motivation
+
+Main purpose of this package is to prevent working with return values of Cypress commands.
+
+From [cypress.io](https://docs.cypress.io/guides/core-concepts/variables-and-aliases.html#Return-Values):
+
+> You cannot assign or work with the return values of any Cypress command. Commands are enqueued and run asynchronously.
 
 ## How to use?
 
@@ -38,11 +44,3 @@ Prevents assignment return values of Cypress commands (type `Chainable`) to vari
 
 ### no-chainable-arguments
 Prevents passing return values of Cypress commands (type `Chainable`) to function arguments.
-
-# Motivation
-
-Main purpose of this package is to prevent working with return values of Cypress commands.
-
-From [cypress.io](https://docs.cypress.io/guides/core-concepts/variables-and-aliases.html#Return-Values):
-
-> You cannot assign or work with the return values of any Cypress command. Commands are enqueued and run asynchronously.
