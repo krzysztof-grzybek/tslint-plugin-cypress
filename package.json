@@ -1,6 +1,6 @@
 {
   "name": "tslint-plugin-cypress",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Set of tslint rules for cypress.io.",
   "main": "tslint-cypress.json",
   "scripts": {
