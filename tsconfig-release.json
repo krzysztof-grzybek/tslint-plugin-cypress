@@ -8,10 +8,11 @@
       "lib": [
         "es6"
       ],
-      "removeComments": true,
+      "removeComments": true
     },
     "files": [
         "src/noChainableAssignmentRule.ts",
         "src/noChainableArgumentsRule.ts",
+        "src/noCyWaitRule.ts"
     ]
   }

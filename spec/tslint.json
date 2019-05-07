@@ -1,7 +1,8 @@
 {
     "rules": {
         "no-chainable-assignment": true,
-        "no-chainable-arguments": true
+        "no-chainable-arguments": true,
+        "no-cy-wait": true
     },
     "rulesDirectory": "../src"
 }

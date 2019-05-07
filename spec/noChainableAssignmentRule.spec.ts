@@ -1,4 +1,4 @@
-import { helper} from '../spec/lintRunner';
+import { helper } from '../spec/lintRunner';
 import { Rule } from '../src/noChainableAssignmentRule';
 
 describe('noChainableAssignment rule', () => {

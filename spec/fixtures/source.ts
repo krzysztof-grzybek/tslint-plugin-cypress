@@ -1,5 +1,5 @@
 interface Chainable<Subject = any> {
-    example: string
+    example: string, wait: (arg: any) => Chainable<any>
 }
 
 // 1 should throw err at L8C7-8
@@ -49,4 +49,15 @@ const k = 24;
 someFunction(j, k);
 someFunction(j, j);
 someFunction(k, i);
+
+// 6 should throw err at L60C1-19
+// 7 should throw err at L61C1-16
+
+const someNum = 1234;
+const someString = '1234';
+chain.wait('some string');
+chain.wait(['array', 'of', 'strings']);
+chain.wait(someString);
+chain.wait(someNum);
+chain.wait(1234);
 
